@@ -8,3 +8,4 @@ FrontEnd/safe-net/node_modules/
 backend/app/DeBERTa
 backend/app/checkpoint-1750
 *.pyc 
+backend/app/DeBERTa_7K_Rows
