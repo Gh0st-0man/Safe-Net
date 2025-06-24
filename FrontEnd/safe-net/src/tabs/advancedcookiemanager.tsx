@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 
 // Define Cookie interface
-interface Cookie extends chrome.cookies.Cookie {}
+interface Cookie extends chrome.cookies.Cookie {} ///defining chrom api cookie call to Cookie
 
 interface AdvancedCookieManagerPageProps {
   initialDomain?: string;
@@ -60,7 +60,7 @@ const AdvancedCookieManagerPage = ({
     },
     []
   );
-
+//load cookies logic
   const loadCookies = useCallback(() => {
     setIsLoading(true);
     setMessage(null);
@@ -384,29 +384,108 @@ const AdvancedCookieManagerPage = ({
       info: <InfoIconLucide {...iconProps} />,
     }[type];
   };
+//cookies badges 
 
-  const renderCookieFlags = (cookie: Cookie) => (
-    <div className="flex flex-col gap-0.5 items-start">
-      {cookie.secure && <span className="badge badge-success">Secure</span>}
-      {cookie.httpOnly && <span className="badge badge-info">HttpOnly</span>}
-      {cookie.hostOnly && <span className="badge badge-purple">HostOnly</span>}
-      {cookie.session && <span className="badge badge-warning">Session</span>}
-      {cookie.sameSite && cookie.sameSite !== "unspecified" && (
-        <span
-          className={`badge ${
-            {
-              lax: "badge-purple",
-              strict: "badge-orange",
-              no_restriction: "badge-gray",
-            }[cookie.sameSite] || "badge-gray"
-          }`}
-        >
-          {cookie.sameSite.charAt(0).toUpperCase() +
-            cookie.sameSite.slice(1).replace("_", " ")}
-        </span>
-      )}
-    </div>
-  );
+const renderCookieFlags = (cookie: Cookie) => (
+  <div className="flex flex-col gap-0.5 items-start">
+    {/* Secure flag */}
+    {cookie.secure ? (
+      <span
+        className="badge badge-success"
+        title="Encrypted: Only travels over HTTPS. Stops attackers from eavesdropping. No secure flag? You can delete this to avoid theft."
+      >
+        Secure
+      </span>
+    ) : (
+      <span
+        className="badge badge-error"
+        title="Unencrypted: Sent over plain HTTP too—anyone on the network can grab it. Delete to block data leaks."
+      >
+        Insecure
+      </span>
+    )}
+
+    {/* HttpOnly flag */}
+    {cookie.httpOnly ? (
+      <span
+        className="badge badge-info"
+        title="Protected: JavaScript can’t read it, so malicious scripts can’t steal it."
+      >
+        HttpOnly
+      </span>
+    ) : (
+      <span
+        className="badge badge-warning"
+        title="JS-Accessible: Any script (including injected malware) can grab it. Consider deleting risky cookies."
+      >
+        JS-Accessible
+      </span>
+    )}
+
+    {/* HostOnly flag */}
+    {cookie.hostOnly ? (
+      <span
+        className="badge badge-purple"
+        title="Domain-locked: Only sent to this exact site. Limits accidental leakage to subdomains."
+      >
+        HostOnly
+      </span>
+    ) : (
+      <span
+        className="badge badge-warning"
+        title="Wide scope: Also sent to subdomains. More exposure means higher risk of cross-site abuse."
+      >
+        WideScope
+      </span>
+    )}
+
+    {/* Session vs. Persistent */}
+    {cookie.session ? (
+      <span
+        className="badge badge-success"
+        title="Session-only: Vanishes on browser close. Good for privacy—no long-term tracking."
+      >
+        Session
+      </span>
+    ) : (
+      <span
+        className="badge badge-error"
+        title="Persistent: Sticks around after you close the browser—often used to build your browsing profile. You may want to delete these."
+      >
+        Persistent
+      </span>
+    )}
+
+    {/* SameSite flag */}
+    {cookie.sameSite && cookie.sameSite !== "unspecified" && (
+      <span
+        className={`badge ${
+          {
+            lax: "badge-purple",
+            strict: "badge-green",
+            no_restriction: "badge-gray",
+          }[cookie.sameSite] || "badge-gray"
+        }`}
+        title={
+          cookie.sameSite === "lax"
+            ? "Lax: Sent on top-level navigation and same-site requests. Still lets some cross-site ads slip through."
+            : cookie.sameSite === "strict"
+            ? "Strict: Only sent on same-site requests. Blocks almost all third-party tracking."
+            : /* no_restriction */
+              "None: Sent on every request—even across sites. A classic tool for profiling your browsing history. Deleting these stops cross-site trackers."
+        }
+      >
+        {cookie.sameSite.charAt(0).toUpperCase() +
+          cookie.sameSite.slice(1).replace("_", " ")}
+      </span>
+    )}
+  </div>
+);
+
+
+
+
+
 
   return (
     <div

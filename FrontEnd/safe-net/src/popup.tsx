@@ -1,5 +1,4 @@
 // src/popup.tsx
-// src/popup.tsx
 import React, { useState, useEffect, useCallback } from "react";
 import "./style.css"; // Global styles
 import { VirusTotalScan } from "./components/VirusTotalScan";
@@ -139,6 +138,7 @@ const Popup = () => {
     IconComp: React.ElementType;
   }> = ({ tabName, onClick, children, IconComp }) => (
     <button
+      type="button"  
       className={`tab-button ${
         activeTab === tabName ? "tab-button-active" : "tab-button-inactive"
       }`}
@@ -147,6 +147,7 @@ const Popup = () => {
       aria-selected={activeTab === tabName}
       aria-controls={`tab-panel-${tabName}`}
       id={`tab-${tabName}`}
+      tabIndex={activeTab === tabName ? 0 : -1}
     >
       <IconComp className="tab-button-icon" />
       {children}
@@ -224,7 +225,7 @@ const Popup = () => {
           </div>
         ) : (
           <>
-            <nav
+            <div
               className="popup-tab-navigation"
               role="tablist"
               aria-label="Main navigation"
@@ -250,7 +251,7 @@ const Popup = () => {
               >
                 Settings
               </TabButton>
-            </nav>
+            </div>
 
             <div className="tab-content-area">
               {activeTab === "analyze" && (
@@ -292,7 +293,7 @@ const Popup = () => {
       </main>
 
       <footer className="popup-footer">
-        <p className="popup-footer-text">SafeNet v1.0.0</p>
+        <p className="popup-footer-text">Made in Oman</p>
       </footer>
     </div>
   );
