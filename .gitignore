@@ -1,0 +1,8 @@
+# Plasmo build + GitHub workflow files
+FrontEnd/safe-net/.plasmo/
+FrontEnd/safe-net/.github/
+venv/
+backend/app/__pycache__/
+backend/checkpoint-1750/
+FrontEnd/safe-net/node_modules/
+backend/app/DeBERTa

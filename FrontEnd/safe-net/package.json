@@ -1,0 +1,42 @@
+{
+  "name": "url-analyzer-extension",
+  "displayName": "URL Analyzer",
+  "version": "1.3.0",
+  "description": "Analyze URLs for security threats and privacy concerns",
+  "author": "Azan Moha",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "lucide-react": "^0.511.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@plasmohq/prettier-plugin-sort-imports": "^3.6.4",
+    "@types/chrome": "^0.0.254",
+    "@types/node": "^20.17.47",
+    "@types/react": "^18.3.21",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.4.21",
+    "plasmo": "0.90.5",
+    "postcss": "^8.5.3",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3"
+  },
+  "manifest": {
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "permissions": [
+      "cookies",
+      "tabs",
+      "storage",
+      "activeTab"
+    ]
+  },
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+}

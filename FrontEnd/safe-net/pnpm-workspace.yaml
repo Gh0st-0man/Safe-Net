@@ -1,0 +1,9 @@
+ignoredBuiltDependencies:
+  - '@swc/core'
+  - sharp
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - lmdb
+  - msgpackr-extract
+  - sharp
