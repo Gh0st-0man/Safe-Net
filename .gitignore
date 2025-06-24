@@ -6,3 +6,5 @@ backend/app/__pycache__/
 backend/checkpoint-1750/
 FrontEnd/safe-net/node_modules/
 backend/app/DeBERTa
+backend/app/checkpoint-1750
+*.pyc 
