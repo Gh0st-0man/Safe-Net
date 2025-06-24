@@ -8,7 +8,9 @@
 **FrontEnd** 
 
 - clone the repo with:
-```git clone https://github.com/Ghost-Oman/SafeNet.git
+```
+git clone https://github.com/Ghost-Oman/SafeNet.git
+
 ```
 
 
@@ -20,11 +22,13 @@
 - Ensure you have Docker If not then download it from https://www.docker.com/
 
 - open your terminal and write the following command to pull the backend container
-```docker pull azanmoha/fastapi-safenet
+```
+docker pull azanmoha/fastapi-safenet
 ```
 
 - ensure you are in this path  backend/ and then run 
-```docker run -d -p 5000:5000 --env-file ./app/.env --name url-scanner-api azanmoha/fastapi-safenet:latest
+```
+docker run -d -p 5000:5000 --env-file ./app/.env --name url-scanner-api azanmoha/fastapi-safenet:latest
 ```
 
 - now the extension will be availabe with all its components on your localhost and you can connect to it on http://127.0.0.1:5000
