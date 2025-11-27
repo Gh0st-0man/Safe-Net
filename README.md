@@ -28,7 +28,10 @@ docker pull azanmoha/fastapi-safenet
 
 - ensure you are in this path  backend/ and then run 
 ```
+
 docker run -d -p 5000:5000 --env-file ./app/.env --name url-scanner-api azanmoha/fastapi-safenet:latest
+OR 
+docker run -p 5000:5000 azanmoha/fastapi-safenet:latest           
 ```
 
 - now the extension will be availabe with all its components on your localhost and you can connect to it on http://127.0.0.1:5000
