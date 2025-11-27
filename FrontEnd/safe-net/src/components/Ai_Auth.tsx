@@ -106,7 +106,7 @@ export const AIAuth: React.FC<AIAuthProps> = ({
         setEmail(result.userEmail);
       }
     });
-  }, [checkConnection]); // Add checkConnection as a dependency
+  }, []); // Add checkConnection as a dependency
 
   const handleAuthAction = async (
     action: "login" | "register",
