@@ -9,7 +9,7 @@
 
 - clone the repo with:
 ```
-git clone https://github.com/Ghost-Oman/SafeNet.git
+git clone https://github.com/Gh0st-0man/Safe-Net.git
 
 ```
 
